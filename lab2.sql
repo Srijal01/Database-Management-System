@@ -1,0 +1,67 @@
+--LAB 2: IMPLEMENTATION OF DDL STATEMENTS FOR CREATING TABLES.
+--a) Write a statement to create tables for DEPARTMENT, EMPLOYEE, DEPT_LOCATIONS, PROJECT and WORKS_ON.
+--creating table DEPARTMENT
+CREATE TABLE DEPARTMENT
+(
+		Dname VARCHAR(50),
+		Dnumber INT NOT NULL PRIMARY KEY,
+		Mgr_ssn INT NULL,
+		Mgr_start_date DATE
+);
+--creating table EMPLOTEE
+CREATE TABLE EMPLOYEE
+(
+		FName VARCHAR(50),
+		Minit VARCHAR(4),
+		LName VARCHAR(50),
+		Ssn INT PRIMARY KEY,
+		BDate DATE,
+		Address VARCHAR(10),
+		Sex VARCHAR(10),
+		Salary MONEY,
+		Super_ssn INT,
+		Dno INT,
+		FOREIGN KEY(Dno) REFERENCES DEPARTMENT(Dnumber)
+);
+--creating table DEPT_LOCATIONS
+CREATE TABLE DEPT_LOCATIONS
+(
+		DNumber INT,
+		FOREIGN KEY(DNumber) REFERENCES DEPARTMENT(Dnumber),
+		DLocation VARCHAR(50) PRIMARY KEY
+);
+--creating table PROJECT
+CREATE TABLE PROJECT
+(
+		PName VARCHAR(50) UNIQUE,
+		Pnumber	INT PRIMARY KEY,
+		PLocation VARCHAR(50),
+		Dnumber INT,
+		FOREIGN KEY(Dnumber) REFERENCES DEPARTMENT(Dnumber)
+);
+--creating table WORKS_ON
+CREATE TABLE WORKS_ON
+(
+		Essn INT,
+		FOREIGN KEY(Essn) REFERENCES EMPLOYEE(Ssn),
+		Pno INT,
+		FOREIGN KEY(Pno) REFERENCES PROJECT(Pnumber),
+		Hours INT
+);
+
+--b) Write a statement to add PRIMARY KEY on existing table DEPARTMENT and FOREIGN KEY on EMPLOYEE.
+ALTER TABLE DEPARTMENT ADD CONSTRAINT PK_DEPARTMENT PRIMARY KEY(Dnumber);
+ALTER TABLE EMPLOYEE ADD CONSTRAINT FK_EMPLOYEE_DEPARTMENT FOREIGN KEY(Dno) REFERENCES DEPARTMENT(Dnumber);
+
+--c) Write a statement to drop table DEPARTMENT.
+ALTER TABLE EMPLOYEE DROP CONSTRAINT FK_EMPLOYEE_DEPARTMENT_Dno;
+DROP TABLE DEPARTMENT;
+
+--d) Write a statement to modify the range of Address column in EMPLOYEE table to varchar(60).
+ALTER TABLE EMPLOYEE
+ALTER column address VARCHAR(60);
+
+--e) Write a statement of drop a column PLocation from PROJECT table and again add the same column in the table.
+ALTER TABLE PROJECT DROP column PLocation;
+ALTER TABLE PROJECT ADD PLocation VARCHAR(50);
+
