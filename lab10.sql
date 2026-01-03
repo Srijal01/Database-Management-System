@@ -14,22 +14,20 @@ JOIN EMPLOYEE E ON D.Dnumber = E.Dno;
 SELECT *FROM EMPLOYEEDEPARTMENTVIEW;
 
 --c. Alter the view by adding the attribute project name where the employees are working.
---Drop the existing view:
-DROP VIEW IF EXISTS EMPLOYEEDEPARTMENTVIEW;
---Recreating the view with additional project name attribute:
-CREATE VIEW EMPLOYEEDEVELOPMENTVIEW AS
-SELECT D.Dnumber AS Department_number,
-D.Dname AS Department_name,
-E.FName AS Employee_First_Name,
-E.LName AS Employee_Last_Name,
-E.BDate AS Date_of_Birth,
-E.Address,
-E.Salary,
-P.PName AS Project_name FROM DEPARTMENT D
+ALTER VIEW EMPLOYEEDEPARTMENTVIEW AS
+SELECT 
+  D.Dnumber AS Department_number,
+  D.Dname AS Department_name,
+  E.FName AS Employee_First_Name,
+  E.LName AS Employee_Last_Name,
+  E.BDate AS Date_of_Birth,
+  E.Address,
+  E.Salary,
+  P.PName AS Project_name FROM DEPARTMENT D
 JOIN EMPLOYEE E ON D.Dnumber = E.Dno
 LEFT JOIN WORKS_ON W ON E.Ssn = W.Essn
 LEFT JOIN PROJECT P ON W.Pno = P.Pnumber;
-SELECT *FROM EMPLOYEEDEVELOPMENTVIEW;
+SELECT *FROM EMPLOYEEDEPARTMENTMENTVIEW;
 
 --d. Drop the view.
-DROP VIEW IF EXISTS EMPLOYEEDEVELOPMENTVIEW;
+DROP VIEW IF EXISTS EMPLOYEEDEPARTMENTMENTVIEW;
