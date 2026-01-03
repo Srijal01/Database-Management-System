@@ -114,7 +114,7 @@ e. Write a statement of drop a column PLocation from PROJECT table and again add
 | 8080 | 8888 | 30 |
 | 7070 | 7777 | 35 |
 | 6060 | 6666 | 25 |
----
+
 a. Write the SQL statement to insert the data in the respective tables.  
 b. Write a SQL statement to update the department number to 3333 whose Ssn is 7070 in EMPLOYEE table.  
 c. Write a SQL statement to update the hours to 28 whose Essn is 6060 and Pno is 6666 in WORKS_ON table.  
