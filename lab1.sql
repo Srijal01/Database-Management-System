@@ -6,7 +6,7 @@ CREATE DATABASE COMPANY;
 --b) Write a SQL statement to display all databases.
 SELECT name FROM sys.databases;
 
---c) Write a SQL statement to rename the created database.
+--c) Write a SQL statement to list all databases.
 SELECT *FROM sys.databases;
 
 --d) Write a SQL statement to rename the created database.
